@@ -26,7 +26,7 @@ function Controls({ isPlaying, setIsPlaying, audioObj, setNewCurrentTime, curren
 
 
   function CurrentTime() {
-    let TimeInSecs = audioObj.currentTime;
+    let TimeInSecs = audioObj.object.currentTime;
     let TimeInMins = Math.floor(TimeInSecs / 60);
     let TimeInSecsRemainder = TimeInSecs % 60;
     return <p style={{
@@ -55,7 +55,7 @@ function Controls({ isPlaying, setIsPlaying, audioObj, setNewCurrentTime, curren
     // song length
 
 
-
+    
 
     <>
       
@@ -64,14 +64,16 @@ function Controls({ isPlaying, setIsPlaying, audioObj, setNewCurrentTime, curren
         display="flex"
       >
         <CurrentTime />
-        <Slider
+        { console.log('In Current Time',audioObj, new Date().getMilliseconds())}
+        {/* <Slider
+        
           min={0}
-          max={audioObj.duration}
-          value={audioObj.currentTime}
+          max={audioObj.object.duration}
+          value={audioObj.object.currentTime}
           size="small"
           aria-label="Small"
           onChange={handleInputChange}
-        />
+        /> */}
         <PrevButton playPrevSong={playPrevSong} />
         <PlayPauseButton
           isCurrentlyPlaying={isPlaying}
